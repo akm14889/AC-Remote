@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src=js/app.js></script>
+<body>
+	<h1>Remote Control Simulator</h1>
+	<hr>
+	<div ng-app="myApp" ng-controller="myCtrl" class="extstyle">
+
+		<table style="width: 100%">
+			<tr>
+				<th>Mode</th>
+				<th>Status</th>
+				<th>Fan speed</th>
+			</tr>
+			<tr align="center" style='background-color: floralwhite;' class="spaceUnderAbove">
+				<td><span ng-bind="sACModes"></span></td>
+				<td><span ng-bind="systemStatus"></span></td>
+				<td><span ng-bind="sFanSpeeds"></span></td>
+			</tr>
+			<tr align="center" class="spaceUnderAbove">
+				<td><input type="button" ng-value="sACMode" ng-disabled="getAcModeEnabled()" ng-click="changeMode()" /></td>
+				<td><input id="powerButton"type="button" ng-value="sAcStatus" class="powerButton"ng-click="chnageStatus()"></td>
+				<td><input type="button" ng-value="sFanSpeed" ng-disabled="getFanModeStatus()" ng-click="changeFanSpeed()" ></td>
+			</tr>
+		</table>
+		<hr>
+		
+		<table style="width: 100%">
+			<tr align="center">
+				<td><label>Set Temperature ( C )</label></td>
+				<td><input type="number" ng-model="sTemperature"
+			placeholder="Enter Temperature" ng-change="updateTemperature()" class="txtstyle txtFocus" min="15" max="32" prevent-typing-greater></span></td>
+			</tr>
+			<tr align="center">
+			
+				<td><span ng-bind="MessageAC"></span></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
